@@ -11,4 +11,4 @@ RUN npm install node-red-dashboard
 RUN npm install node-red-contrib-azure-iot-edge-module
 
 # Install admin extension
-#RUN npm install -g node-red-admin
+RUN npm install -g node-red-admin
