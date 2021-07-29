@@ -7,8 +7,12 @@ USER node-red
 # Install the dashboard extension
 RUN npm install node-red-dashboard
 
+#install DS18B20 extension
+RUN npm install node-red-contrib-ds18b20-sensor
+RUN npm install node-red-contrib-influxdb
+
 # Install Azure IoT Edge Module nodes
 RUN npm install node-red-contrib-azure-iot-edge-module
 
 # Install admin extension ajalalag
-RUN npm install -g node-red-admin
+#RUN npm install -g node-red-admin
