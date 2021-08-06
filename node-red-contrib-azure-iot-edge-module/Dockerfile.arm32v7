@@ -14,5 +14,7 @@ RUN npm install node-red-contrib-influxdb
 # Install Azure IoT Edge Module nodes
 RUN npm install node-red-contrib-azure-iot-edge-module
 
+ADD flows.json /usr/src/node-red/flows.json
+
 # Install admin extension ajalalag
 #RUN npm install -g node-red-admin

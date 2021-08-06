@@ -1,0 +1,342 @@
+[
+    {
+        "id": "fbce3132.d6f5e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "390198bc.bd44b8",
+        "type": "moduleoutput",
+        "z": "fbce3132.d6f5e",
+        "client": "a8e96e43.5febc",
+        "output": "test1",
+        "x": 1260,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "11de9cdd.349cc3",
+        "type": "inject",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"data\":\"hoi dylan\"}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 40,
+        "wires": [
+            [
+                "390198bc.bd44b8"
+            ]
+        ]
+    },
+    {
+        "id": "45a20e1b.da397",
+        "type": "rpi-ds18b20",
+        "z": "fbce3132.d6f5e",
+        "topic": "",
+        "array": true,
+        "name": "ds18b20",
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "5a29c355.a48d4c",
+                "390198bc.bd44b8",
+                "98469003.78542",
+                "b965f13d.e1649",
+                "a9c5ccec.b3a95"
+            ]
+        ]
+    },
+    {
+        "id": "550b88b.9420f78",
+        "type": "inject",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "45a20e1b.da397"
+            ]
+        ]
+    },
+    {
+        "id": "605fbcd2.0d4ae4",
+        "type": "function",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 980,
+        "y": 120,
+        "wires": [
+            [
+                "ba8af87e.1410e8"
+            ]
+        ]
+    },
+    {
+        "id": "ba8af87e.1410e8",
+        "type": "ui_gauge",
+        "z": "fbce3132.d6f5e",
+        "name": "Temperatuur",
+        "group": "6518b328.14e73c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "70",
+        "seg2": "85",
+        "x": 1230,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5a29c355.a48d4c",
+        "type": "debug",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "98469003.78542",
+        "type": "change",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0].temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 120,
+        "wires": [
+            [
+                "605fbcd2.0d4ae4"
+            ]
+        ]
+    },
+    {
+        "id": "452d510b.bfe67",
+        "type": "function",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 980,
+        "y": 160,
+        "wires": [
+            [
+                "6285d6bb.f20cd8"
+            ]
+        ]
+    },
+    {
+        "id": "6285d6bb.f20cd8",
+        "type": "ui_gauge",
+        "z": "fbce3132.d6f5e",
+        "name": "Temperatuur",
+        "group": "6518b328.14e73c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "70",
+        "seg2": "85",
+        "x": 1230,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b965f13d.e1649",
+        "type": "change",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[1].temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 160,
+        "wires": [
+            [
+                "452d510b.bfe67"
+            ]
+        ]
+    },
+    {
+        "id": "fc824e4e.c785d",
+        "type": "function",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 980,
+        "y": 200,
+        "wires": [
+            [
+                "23695acd.fa2586"
+            ]
+        ]
+    },
+    {
+        "id": "23695acd.fa2586",
+        "type": "ui_gauge",
+        "z": "fbce3132.d6f5e",
+        "name": "Temperatuur",
+        "group": "6518b328.14e73c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "70",
+        "seg2": "85",
+        "x": 1230,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a9c5ccec.b3a95",
+        "type": "change",
+        "z": "fbce3132.d6f5e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[2].temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 200,
+        "wires": [
+            [
+                "fc824e4e.c785d"
+            ]
+        ]
+    },
+    {
+        "id": "a8e96e43.5febc",
+        "type": "edgeclient",
+        "z": ""
+    },
+    {
+        "id": "6518b328.14e73c",
+        "type": "ui_group",
+        "z": "",
+        "name": "SCK",
+        "tab": "c604e7c8.2876a8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c604e7c8.2876a8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
