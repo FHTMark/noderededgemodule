@@ -7,9 +7,14 @@ USER node-red
 # Install the dashboard extension
 RUN npm install node-red-dashboard
 
-#install DS18B20 extension
+#install several extension
+#RUN npm install node-gyp
+#RUN npm install node-python
+RUN npm install node-red-node-pi-gpio
 RUN npm install node-red-contrib-ds18b20-sensor
 RUN npm install node-red-contrib-influxdb
+#RUN npm install node-red-node-pi-mcp3008
+
 
 # Install Azure IoT Edge Module nodes
 RUN npm install node-red-contrib-azure-iot-edge-module
