@@ -4,10 +4,8 @@
     "image": {
         "repository": "testfhtcontainerreg.azurecr.io/v2/noderededgemodule",
         "tag": {
-            "version": "2.0.1",
+            "version": "2.0.8",
             "platforms": {
-                "amd64": "./Dockerfile.amd64",
-                "arm64v8": "./Dockerfile.arm64v8",
                 "arm32v7": "./Dockerfile.arm32v7"
             }
         },

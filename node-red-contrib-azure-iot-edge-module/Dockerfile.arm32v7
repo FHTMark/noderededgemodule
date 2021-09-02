@@ -1,6 +1,6 @@
-# Use node-red official containers
-FROM nodered/node-red:1.1.3-12-minimal-arm32v7
 
+# Use node-red official containers
+FROM nodered/node-red:1.1.3-12-arm32v7
 WORKDIR /usr/src/node-red
 USER node-red
 
@@ -10,11 +10,10 @@ RUN npm install node-red-dashboard
 #install several extension
 #RUN npm install node-gyp
 #RUN npm install node-python
-RUN npm install node-red-node-pi-gpio
+RUN npm install node-red-node-pi-gpiod
 RUN npm install node-red-contrib-ds18b20-sensor
 RUN npm install node-red-contrib-influxdb
-#RUN npm install node-red-node-pi-mcp3008
-
+RUN npm install node-red-node-pi-mcp3008
 
 # Install Azure IoT Edge Module nodes
 RUN npm install node-red-contrib-azure-iot-edge-module
